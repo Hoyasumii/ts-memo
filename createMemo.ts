@@ -20,7 +20,7 @@ export function createMemo(): MemoFunction {
       functionToBeMemoized.prototype.constructor.name
     }:${args.join(":")}`;
 
-    if (context[contextKey]) {
+    if (contextKey in context) {
       console.log("memo");
       return context[contextKey];
     }
@@ -57,4 +57,3 @@ console.timeEnd("1 Million Filter 2");
 console.time("1 Million Filter 3");
 memo(filter, oneMillionArray, (item) => item % 2 === 0);
 console.timeEnd("1 Million Filter 3");
-
